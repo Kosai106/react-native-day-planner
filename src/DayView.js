@@ -29,6 +29,7 @@ export const DayView = React.createClass({
     onLayout: PropTypes.func,
     onScroll: PropTypes.func,
     scrollEnabled: PropTypes.bool,
+    timeFormat: PropTypes.bool,
   },
 
   scrollView: (null: ?Object),
@@ -74,7 +75,7 @@ export const DayView = React.createClass({
       slots.push((
         <View
           key={'slot' + i}
-          style={[styles.hourSlot, {height: this.props.hourHeight}]} />
+          style={[styles.hourSlot, { height: this.props.hourHeight }]} />
       ));
     }
     return slots;
@@ -87,8 +88,8 @@ export const DayView = React.createClass({
       timeLabels.push((
         <View
           key={'label' + i}
-          style={{height: this.props.hourHeight}}>
-          <Text style={styles.timeLabelText}>{time.format('h A')}</Text>
+          style={{ height: this.props.hourHeight }}>
+          {(this.props.timeFormat === true) ? <Text style={styles.timeLabelText}>{time.format('h A')}</Text> : <Text style={styles.timeLabelText}>{time.format('HH:mm')}</Text>}
         </View>
       ));
     }
