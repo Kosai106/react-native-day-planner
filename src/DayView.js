@@ -29,7 +29,7 @@ export const DayView = React.createClass({
     onLayout: PropTypes.func,
     onScroll: PropTypes.func,
     scrollEnabled: PropTypes.bool,
-    timeFormat: PropTypes.bool,
+    timeFormat: PropTypes.string.isRequired,
   },
 
   scrollView: (null: ?Object),
@@ -90,7 +90,7 @@ export const DayView = React.createClass({
           key={'label' + i}
           style={{ height: this.props.hourHeight }}>
           {
-            (this.props.timeFormat === false) ?
+            (this.props.timeFormat === '12') ?
               <Text style={styles.timeLabelText}>{time.format('h A')}</Text> :
               <Text style={styles.timeLabelText}>{time.format('HH:mm')}</Text>
           }
@@ -103,7 +103,11 @@ export const DayView = React.createClass({
   renderTimeIndicator(currentTime: Date): ReactElement {
     return (
       <CurrentTimeIndicator
-        displayTime={moment(currentTime).format('h:mm')}
+        displayTime={
+          (this.props.timeFormat === '12') ?
+            moment(currentTime).format('h:mm') :
+            moment(currentTime).format('HH:mm')
+        }
         top={this.timeIndicatorTop(currentTime)} />
     );
   },
