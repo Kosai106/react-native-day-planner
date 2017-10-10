@@ -128,6 +128,7 @@ export const DayView = React.createClass({
       onScroll,
       scrollEnabled,
       style,
+      eventsContainerStyle
     } = this.props;
 
     let timeIndicator;
@@ -150,7 +151,7 @@ export const DayView = React.createClass({
           </View>
           <View style={styles.hourSlotsContainer}>
             {this.renderHourSlots()}
-            <View style={styles.eventsContainer}>
+            <View style={eventsContainerStyle}>
               {this.renderEvents()}
             </View>
           </View>
@@ -185,9 +186,5 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 12,
     textAlign: 'right',
-  },
-  eventsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   }
 });
