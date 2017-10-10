@@ -30,6 +30,7 @@ export const DayView = React.createClass({
     onScroll: PropTypes.func,
     scrollEnabled: PropTypes.bool,
     timeFormat: PropTypes.string.isRequired,
+    eventsContainerStyle: PropTypes.object,
   },
 
   scrollView: (null: ?Object),
