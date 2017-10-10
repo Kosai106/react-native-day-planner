@@ -150,7 +150,9 @@ export const DayView = React.createClass({
           </View>
           <View style={styles.hourSlotsContainer}>
             {this.renderHourSlots()}
-            {this.renderEvents()}
+            <View style={styles.eventsContainer}>
+              {this.renderEvents()}
+            </View>
           </View>
           {timeIndicator}
         </View>
@@ -183,5 +185,9 @@ const styles = StyleSheet.create({
     marginRight: 10,
     fontSize: 12,
     textAlign: 'right',
+  },
+  eventsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   }
 });
