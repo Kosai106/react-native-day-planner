@@ -89,7 +89,11 @@ export const DayView = React.createClass({
         <View
           key={'label' + i}
           style={{ height: this.props.hourHeight }}>
-          {(this.props.timeFormat === true) ? <Text style={styles.timeLabelText}>{time.format('h A')}</Text> : <Text style={styles.timeLabelText}>{time.format('HH:mm')}</Text>}
+          {
+            (this.props.timeFormat === false) ?
+              <Text style={styles.timeLabelText}>{time.format('h A')}</Text> :
+              <Text style={styles.timeLabelText}>{time.format('HH:mm')}</Text>
+          }
         </View>
       ));
     }
