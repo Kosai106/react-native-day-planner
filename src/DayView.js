@@ -30,7 +30,6 @@ export const DayView = React.createClass({
     onScroll: PropTypes.func,
     scrollEnabled: PropTypes.bool,
     timeFormat: PropTypes.string.isRequired,
-    eventsContainerStyle: PropTypes.object,
   },
 
   scrollView: (null: ?Object),
@@ -128,8 +127,7 @@ export const DayView = React.createClass({
       onLayout,
       onScroll,
       scrollEnabled,
-      style,
-      eventsContainerStyle
+      style
     } = this.props;
 
     let timeIndicator;
@@ -152,9 +150,7 @@ export const DayView = React.createClass({
           </View>
           <View style={styles.hourSlotsContainer}>
             {this.renderHourSlots()}
-            <View style={eventsContainerStyle}>
-              {this.renderEvents()}
-            </View>
+            {this.renderEvents()}
           </View>
           {timeIndicator}
         </View>
